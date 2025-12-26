@@ -5,3 +5,11 @@ __pycache__/
 data/out/
 *.log
 .DS_Store
+data/in/*.fixed.csv
+
+# runtime outputs
+/data/out/
+/data/*.log
+/data/out/*.log
+/data/out/*.xml
+/data/out/*.m3u
