@@ -13,3 +13,6 @@ data/in/*.fixed.csv
 /data/out/*.log
 /data/out/*.xml
 /data/out/*.m3u
+
+# local data (do not commit playlists / mappings / outputs)
+data/
