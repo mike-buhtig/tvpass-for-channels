@@ -16,3 +16,6 @@ data/in/*.fixed.csv
 
 # local data (do not commit playlists / mappings / outputs)
 data/
+
+# local inputs (private)
+/data/in/
