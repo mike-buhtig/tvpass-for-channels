@@ -19,3 +19,13 @@ data/
 
 # local inputs (private)
 /data/in/
+
+# editor junk
+*.swp
+*.swo
+*~
+
+# editor junk
+*.swp
+*.swo
+*~
