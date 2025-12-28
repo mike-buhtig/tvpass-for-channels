@@ -29,3 +29,16 @@ data/
 *.swp
 *.swo
 *~
+
+# runtime + private data
+/data/in/
+/data/out/
+
+# local junk
+main
+app/*.bak
+
+# editor junk
+*.swp
+*.swo
+*~

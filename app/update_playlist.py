@@ -91,18 +91,21 @@ def fetch_m3u(url: str) -> List[str]:
     raise RuntimeError(f"FAILED after {retries} attempts: {last_err}")
 
 def main() -> int:
-    playlist_url = (os.environ.get("PLAYLIST_URL") or "").strip()
+    playlist_url = (os.environ.get("PLAYLIST_URL") or os.environ.get("IN_M3U_URL") or "").strip()
 
     in_m3u = Path(os.environ.get("IN_M3U", "/data/in/cable_channel_playlist.m3u"))
-    map_csv = Path(os.environ.get("GROUP_MAP_CSV", "/data/in/cable_channel_playlist_group_id_template.csv"))
+    map_csv = Path(os.environ.get("GROUP_MAP_CSV", "/data/config/group_map.csv"))
     out_m3u = Path(os.environ.get("OUT_M3U", "/data/out/playlist.m3u"))
     drop_log = Path(os.environ.get("DROP_LOG", "/data/out/dropped_no_tvg_id.log"))
 
-    if not map_csv.exists():
-        print(f"ERROR: missing mapping csv: {map_csv}", file=sys.stderr)
+    group_map = {}
+    if map_csv.exists():
+       group_map = read_group_map(map_csv)
+    else:
+        print(f"WARNING: mapping csv missing: {map_csv} (group_id injection disabled)", file=sys.stderr)
         return 2
 
-    group_map = read_group_map(map_csv)
+    # group_map = read_group_map(map_csv)
 
     # Source lines: URL preferred, fallback to local file
     if playlist_url:

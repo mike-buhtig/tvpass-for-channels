@@ -1,0 +1,14 @@
+# git / editor / OS junk
+.git
+**/*.swp
+**/*.swo
+**/*~
+main
+app/*.bak
+
+# local runtime + inputs (never bake into image)
+data/
+docker/data/
+
+# anything else you never want baked
+*.log
